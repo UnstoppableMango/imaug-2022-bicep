@@ -1,6 +1,8 @@
 # Iowa Microsoft Azure User Group - Bicep Talk
 
-Infrastructure as code with Bicep and migrating from ARM
+Infrastructure as code with Bicep and migrating from ARM.
+
+This talk assumes a loose knowledge of Azure Resource Manager (ARM) templates and Infrastructure as Code (IaC).
 
 ## What is Bicep?
 
@@ -64,7 +66,7 @@ Outputs
 output appUrl string = myApp.properties.defaultHostName
 ```
 
-[reference.bicep](/01-Bicep/reference.bicep)
+<https://docs.microsoft.com/en-us/azure/azure-resource-manager/bicep/file>
 
 ## 02 Conditionals
 
@@ -81,6 +83,8 @@ Ternaries
 ```bicep
 var name = location == 'eastus2' ? 'in-the-east' : 'not-in-the-east'
 ```
+
+<https://docs.microsoft.com/en-us/azure/azure-resource-manager/bicep/conditional-resource-deployment>
 
 ## 03 Loops
 
@@ -108,6 +112,8 @@ Using resource arrays
 var accountNames = [for i in numArray: accounts[i].name]
 ```
 
+<https://docs.microsoft.com/en-us/azure/azure-resource-manager/bicep/loops>
+
 ## 04 Modules
 
 Modules
@@ -127,6 +133,19 @@ output uri string = vault.properties.vaultUri
 // azuredeploy.bicep
 var vaultUri = keyVaultDeployment.outputs.uri
 ```
+
+<https://docs.microsoft.com/en-us/azure/azure-resource-manager/bicep/modules>
+
+## 05 Linting
+
+Bicep comes with a linter and can be used with `bicep build` or the [VSCode Extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-bicep).
+The default rules at the time of writing are taken from [arm-ttk test cases](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/template-test-cases).
+
+<https://docs.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter>
+
+## 06 Migrating from ARM
+
+<https://docs.microsoft.com/en-us/azure/azure-resource-manager/bicep/migrate>
 
 ## Using this repo
 

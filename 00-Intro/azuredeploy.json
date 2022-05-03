@@ -33,7 +33,10 @@
             "location": "[parameters('location')]",
             "properties": {
                 "serverFarmId": "[resourceId('Microsoft.Web/sites', variables('appPlanName'))]"
-            }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/serverfarms', variables('appPlanName'))]"
+            ]
         }
     ]
 }
