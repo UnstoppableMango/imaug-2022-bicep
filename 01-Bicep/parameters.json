@@ -4,6 +4,9 @@
   "parameters": {
       "name": {
         "value": "imaug-01"
+      },
+      "password": {
+        "value": "hunter2"
       }
   }
 }

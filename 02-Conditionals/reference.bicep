@@ -15,4 +15,11 @@ resource dataFactory 'Microsoft.DataFactory/factories@2018-06-01' = {
       rootFolder: '02-Conditionals'
     } : null
   }
+
+  resource pipeline 'pipelines' = if (!enableGit) {
+    name: 'NoGit'
+    properties: {
+      description: 'Created when git integration is disabled'
+    }
+  }
 }

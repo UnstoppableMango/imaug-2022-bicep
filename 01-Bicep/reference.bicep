@@ -1,5 +1,8 @@
 param location string = resourceGroup().location
-param name string
+param name string = 'default-value'
+
+@secure()
+param password string
 
 var sku = {
   tier: 'Basic'
@@ -19,19 +22,21 @@ resource app 'Microsoft.Web/sites@2021-03-01' = {
     serverFarmId: appPlan.id
   }
 
-  resource appsettings 'config' = {
+  resource settings 'config' = {
     name: 'appsettings'
     properties: {
-      Environment: 'Development'
+      Calculated: string(400 + 20)
+      Password: password
     }
   }
 }
 
 resource webSettings 'Microsoft.Web/sites/config@2021-03-01' = {
-  name: '${app.name}/web'
+  name: 'web'
+  parent: app
   properties: {
     minTlsVersion: '1.2'
   }
 }
 
-output environment string = app::appsettings.properties.Environment
+output calculated string = app::settings.properties.Calculated

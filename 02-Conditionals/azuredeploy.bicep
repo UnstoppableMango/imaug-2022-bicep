@@ -1,1 +1,5 @@
-// TODO
+// Parameters
+
+// Ternary
+
+// If
