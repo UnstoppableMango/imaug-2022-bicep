@@ -1,0 +1,1 @@
+bicep decompile azuredeploy.json
